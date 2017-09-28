@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '0.12'
+sudo: false
+before_install:
+- npm install -g npm@next
+before_script:
+- npm install -g grunt-cli
+script:
+- grunt test
+before_deploy:
+- grunt replace:version --tag=$TRAVIS_TAG --build=$TRAVIS_BUILD_NUMBER
+- npm unpublish emp.ria-framework@$TRAVIS_TAG
+deploy:
+  provider: npm
+  email: viatsyshyn@gmail.com
+  api_key:
+    secure: MkaTsvKDFgqLVCzJbyVKllBne3pcAV84OQz+bRdeH5CoV3gimkNpptfg4qdCfASmP4+77eCM/hU4uSPnA0L5kAqMu5biDsgo2W7+reqCruuNvBkc/IdCVWZmIfbQZ5tBUmoCK45OOvzCd8IY5YeOXNlw2UaocmkcvqR9s1xT4MaIHmv+UW5RPoK30RM1483M16aMPXoKHyUGbkst6VEmkRTVnMHp9zgSPitF2j+wCrvIOcYIyRoA252tQiDwpTxEVRU/+2M5u9FgKwRhnWggJjhXsDyHjP1nuPPWFXHvpZr/FJN8u8+jJL78lLqVG9qYUX9kau4JBsiULSjPVUeOlSoqDxKNtAk3q+BvSAlFaZi9kFRjE2VtKVF4rtdAbK7Yt0O/I4UfTJe+PAi6WMqv023QeDpYYWJo5ogf585/o66YxOldqhI3/aDQB1/VMjX8eWFyjXRaGIsMjFL94JprGHbxtkY9RtDigINoqCNNMoMiyy749WvqbvUwYa8cRJXiDm9Up0d/IVQyVYVdsZrEdxMaHFACs3vzME4saj7TIqLYBk6gGbvlGfYvK98nK4m7AS7Xm7NMRIJZLyNmvyhY2t6kAQ02VN26wRj5zwamn3Ep5R90nVZexyWixEI9MCoX9Lb21FvYudWlP7ye5vaZZcMiEl/mL2/XhpTSB4h7sEU=
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: viatsyshyn/emp.ria

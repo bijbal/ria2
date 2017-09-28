@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RIA Test</title>
+
+</head>
+<body>
+    <div><h3>Loading....</h3></div>
+</body>
+<script src="/_bootstrap.js" type="text/javascript">
+    ria.__CFG = {
+        "#require": {
+            "appCodeDir": "//localhost:8080/test/mvc-demo/",
+            "libs": {
+                "lib/": "~/../lib/",
+                "ria": "~/../.."
+            },
+            "plugins": [
+              "~/assets/jade.js"
+            ]
+        },
+        "#mvc": {
+            "appClass": "app.Application",
+            "settings": {
+                "player": "c01t",
+                "session": "123456789098756432123645",
+                "push.enabled": true,
+                "service": "/test/mvc-demo/data/"
+            }
+        }
+    }
+</script>
+
+</html>
